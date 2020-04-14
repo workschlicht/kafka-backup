@@ -60,7 +60,7 @@ produce_messages() {
     return 255
   fi
 
-  gen_messages "$PARTITION" "$START_NUM" "$COUNT" "$SIZE" | kafkacat -P -b localhost:9092 -t "$TOPIC" -p "$PARTITION" -K ","
+  gen_messages "$PARTITION" "$START_NUM" "$COUNT" "$SIZE" | kafkacat -P -b localhost:9092 -t "$TOPIC" -p "$PARTITION" -K "," -H "myHeader=false"
 }
 export -f produce_messages
 
